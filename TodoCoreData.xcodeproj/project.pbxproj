@@ -14,6 +14,11 @@
 		9F59B8BD25346640000FFF74 /* TodoCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F59B8BB25346640000FFF74 /* TodoCoreData.xcdatamodeld */; };
 		9F59B8BF25346645000FFF74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F59B8BE25346645000FFF74 /* Assets.xcassets */; };
 		9F59B8C225346645000FFF74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F59B8C025346645000FFF74 /* LaunchScreen.storyboard */; };
+		9F59B8CE25346866000FFF74 /* TableViewDelegate+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59B8CD25346866000FFF74 /* TableViewDelegate+ViewController.swift */; };
+		9F59B8D125346A0D000FFF74 /* ToDo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59B8CF25346A0D000FFF74 /* ToDo+CoreDataClass.swift */; };
+		9F59B8D225346A0D000FFF74 /* ToDo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59B8D025346A0D000FFF74 /* ToDo+CoreDataProperties.swift */; };
+		9F59B8D425346A26000FFF74 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59B8D325346A26000FFF74 /* PersistanceService.swift */; };
+		9FE9CFFA25346BD3001E4C91 /* AddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9CFF925346BD3001E4C91 /* AddedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		9F59B8BE25346645000FFF74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F59B8C125346645000FFF74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F59B8C325346645000FFF74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F59B8CD25346866000FFF74 /* TableViewDelegate+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewDelegate+ViewController.swift"; sourceTree = "<group>"; };
+		9F59B8CF25346A0D000FFF74 /* ToDo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9F59B8D025346A0D000FFF74 /* ToDo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9F59B8D325346A26000FFF74 /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
+		9FE9CFF925346BD3001E4C91 /* AddedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				9F59B8B125346640000FFF74 /* TodoCoreData */,
+				9F59B8B825346640000FFF74 /* Main.storyboard */,
 				9F59B8B025346640000FFF74 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,10 +69,10 @@
 		9F59B8B125346640000FFF74 /* TodoCoreData */ = {
 			isa = PBXGroup;
 			children = (
-				9F59B8CB25346683000FFF74 /* Modules */,
-				9F59B8CA2534667E000FFF74 /* Model */,
+				9F59B8CC2534684D000FFF74 /* Extensions */,
 				9F59B8C92534664C000FFF74 /* AppFiles */,
-				9F59B8B825346640000FFF74 /* Main.storyboard */,
+				9F59B8CA2534667E000FFF74 /* Model */,
+				9F59B8CB25346683000FFF74 /* Modules */,
 			);
 			path = TodoCoreData;
 			sourceTree = "<group>";
@@ -81,7 +92,10 @@
 		9F59B8CA2534667E000FFF74 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9F59B8CF25346A0D000FFF74 /* ToDo+CoreDataClass.swift */,
+				9F59B8D025346A0D000FFF74 /* ToDo+CoreDataProperties.swift */,
 				9F59B8BB25346640000FFF74 /* TodoCoreData.xcdatamodeld */,
+				9F59B8D325346A26000FFF74 /* PersistanceService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -90,8 +104,17 @@
 			isa = PBXGroup;
 			children = (
 				9F59B8B625346640000FFF74 /* ViewController.swift */,
+				9FE9CFF925346BD3001E4C91 /* AddedViewController.swift */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		9F59B8CC2534684D000FFF74 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9F59B8CD25346866000FFF74 /* TableViewDelegate+ViewController.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,9 +189,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F59B8B725346640000FFF74 /* ViewController.swift in Sources */,
+				9F59B8CE25346866000FFF74 /* TableViewDelegate+ViewController.swift in Sources */,
 				9F59B8B325346640000FFF74 /* AppDelegate.swift in Sources */,
+				9F59B8D225346A0D000FFF74 /* ToDo+CoreDataProperties.swift in Sources */,
 				9F59B8BD25346640000FFF74 /* TodoCoreData.xcdatamodeld in Sources */,
+				9FE9CFFA25346BD3001E4C91 /* AddedViewController.swift in Sources */,
+				9F59B8D425346A26000FFF74 /* PersistanceService.swift in Sources */,
 				9F59B8B525346640000FFF74 /* SceneDelegate.swift in Sources */,
+				9F59B8D125346A0D000FFF74 /* ToDo+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
