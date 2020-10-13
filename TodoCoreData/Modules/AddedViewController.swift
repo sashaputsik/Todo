@@ -42,10 +42,12 @@ extension UIButton{
         button.layer.cornerRadius = UIButton.Appearance.cornerRadius
         button.layer.shadowOpacity = UIButton.Appearance.shadowOpicity
         button.layer.shadowOffset = UIButton.Appearance.shadowOffset
+        button.layer.shadowColor = UIButton.Appearance.shadowColor
     }
     struct Appearance{
+        static let shadowColor: CGColor = UIColor.lightGray.cgColor
         static let cornerRadius: CGFloat = 10
-        static let shadowOpicity: Float = 0.4
-        static let shadowOffset = CGSize(width: 1, height: 1)
+        static let shadowOpicity: Float = 0.6
+        static let shadowOffset = CGSize(width: 2, height: 2)
     }
 }

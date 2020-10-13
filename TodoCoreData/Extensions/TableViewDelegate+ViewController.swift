@@ -14,20 +14,13 @@ extension ViewController: UITableViewDataSource{
         cell.actionLabel.textColor = action.isCompleted ? .lightGray : .black
         return cell
     }
-    
-    
-    
+
 }
 
 //MARK: UITableViewDelegate
 
 extension ViewController: UITableViewDelegate{
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-
-    }
-  
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var editTitle = ""
         editTitle = toDoList[indexPath.row].isCompleted ? "Not completed" : "Completed"
@@ -38,7 +31,8 @@ extension ViewController: UITableViewDelegate{
             PersistanceServise.appDelegate.saveContext()
             tableView.reloadData()
         })
-        editAction.backgroundColor = UIColor.blue
+     
+        editAction.backgroundColor = #colorLiteral(red: 0.2153312262, green: 0.6583518401, blue: 0.4810098751, alpha: 1)
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: {[weak self] (action, indexPath) in
             guard let self = self else{return }
             let context = PersistanceServise.context
@@ -54,6 +48,9 @@ extension ViewController: UITableViewDelegate{
         return [editAction, deleteAction]
     }
   
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50.0
+    }
 }
 
 

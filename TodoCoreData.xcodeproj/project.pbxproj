@@ -97,10 +97,10 @@
 		9F59B8CA2534667E000FFF74 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9F59B8D325346A26000FFF74 /* PersistanceService.swift */,
 				9F59B8CF25346A0D000FFF74 /* ToDo+CoreDataClass.swift */,
 				9F59B8D025346A0D000FFF74 /* ToDo+CoreDataProperties.swift */,
 				9F59B8BB25346640000FFF74 /* TodoCoreData.xcdatamodeld */,
-				9F59B8D325346A26000FFF74 /* PersistanceService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -108,8 +108,8 @@
 		9F59B8CB25346683000FFF74 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				9F59B8B625346640000FFF74 /* ViewController.swift */,
 				9FE9CFF925346BD3001E4C91 /* AddedViewController.swift */,
+				9F59B8B625346640000FFF74 /* ViewController.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";

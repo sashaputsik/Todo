@@ -5,8 +5,7 @@ class ViewController: UIViewController {
     var toDoList = [ToDo]()
     var comp = [Any]()
     @IBOutlet private(set) var tableView: UITableView!
-    
-    @IBOutlet weak var showCompletedActionButton: UIBarButtonItem!
+    @IBOutlet private(set) var showCompletedActionButton: UIButton!
     fileprivate var isShowCompletedAction = false
     
     override func viewWillAppear(_ animated: Bool) {
@@ -18,6 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
     }
     
     func fetchRequest(predicate: NSPredicate?){
@@ -36,16 +36,11 @@ class ViewController: UIViewController {
         tableView.reloadData()
     }
     
-    @IBAction func reload(_ sendet: UIBarButtonItem){
-        for action in toDoList{
-            print(action.isCompleted, action.isFault)
-        }
-        if !isShowCompletedAction{
-            fetchRequest(predicate: nil)
-        }else{
-            let predicate = NSPredicate(format: "isCompleted == NO")
-            fetchRequest(predicate: predicate)
-        }
+
+    @IBAction func showCompletedAction(_ sender: UIButton) {
+        showCompletedActionButton.setTitle(!isShowCompletedAction ? "Скрыть завершенные" : "Показать завершенные", for: .normal)
+        let predicate = NSPredicate(format: "isCompleted == NO")
+        fetchRequest(predicate: !isShowCompletedAction ? nil : predicate)
         isShowCompletedAction = !isShowCompletedAction
     }
     @IBAction override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {
