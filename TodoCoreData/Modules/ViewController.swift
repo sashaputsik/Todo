@@ -3,7 +3,7 @@ import CoreData
 
 class ViewController: UIViewController {
     var toDoList = [ToDo]()
-    
+    var comp = [Any]()
     @IBOutlet private(set) var tableView: UITableView!
     
     @IBOutlet weak var showCompletedActionButton: UIBarButtonItem!
@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
         tableView.delegate = self
         tableView.dataSource = self
     }
