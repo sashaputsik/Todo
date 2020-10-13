@@ -12,7 +12,6 @@ extension ViewController: UITableViewDataSource{
         let action = toDoList[indexPath.row]
         cell.actionLabel.text = action.action
         cell.actionLabel.textColor = action.isCompleted ? .lightGray : .black
-       
         return cell
     }
     
@@ -25,12 +24,35 @@ extension ViewController: UITableViewDataSource{
 extension ViewController: UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        toDoList[indexPath.row].isCompleted = !toDoList[indexPath.row].isCompleted
-        print(toDoList[indexPath.row].isCompleted)
-        PersistanceServise.appDelegate.saveContext()
-        tableView.reloadData()
+        
+
     }
-    
+  
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        var editTitle = ""
+        editTitle = toDoList[indexPath.row].isCompleted ? "Not completed" : "Completed"
+        let editAction = UITableViewRowAction(style: .default, title: editTitle, handler: {[weak self] (action, indexPath) in
+            guard let self = self else{return }
+            self.toDoList[indexPath.row].isCompleted = !self.toDoList[indexPath.row].isCompleted
+            print(self.toDoList[indexPath.row].isCompleted)
+            PersistanceServise.appDelegate.saveContext()
+            tableView.reloadData()
+        })
+        editAction.backgroundColor = UIColor.blue
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: {[weak self] (action, indexPath) in
+            guard let self = self else{return }
+            let context = PersistanceServise.context
+            let action = self.toDoList[indexPath.row]
+            context.delete(action)
+            self.toDoList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left)
+            tableView.reloadData()
+            PersistanceServise.appDelegate.saveContext()
+        })
+        deleteAction.backgroundColor = UIColor.red
+
+        return [editAction, deleteAction]
+    }
   
 }
 
