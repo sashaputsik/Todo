@@ -10,5 +10,6 @@ extension ToDo {
 
     @NSManaged public var action: String?
     @NSManaged public var isCompleted: Bool
+    @NSManaged public var notificationTime: Date
 
 }

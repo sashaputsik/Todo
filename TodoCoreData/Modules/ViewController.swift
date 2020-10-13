@@ -4,10 +4,14 @@ import CoreData
 class ViewController: UIViewController {
     var toDoList = [ToDo]()
     var comp = [Any]()
+    var dateFormatter: DateFormatter{
+        let dateF = DateFormatter()
+        dateF.dateFormat = "HH:mm"
+        return dateF
+    }
     @IBOutlet private(set) var tableView: UITableView!
     @IBOutlet private(set) var showCompletedActionButton: UIButton!
     fileprivate var isShowCompletedAction = false
-    
     override func viewWillAppear(_ animated: Bool) {
         let predicate = NSPredicate(format: "isCompleted == NO")
         fetchRequest(predicate: predicate)
@@ -36,7 +40,8 @@ class ViewController: UIViewController {
         tableView.reloadData()
     }
     
-
+    
+//MARK: IBAction
     @IBAction func showCompletedAction(_ sender: UIButton) {
         showCompletedActionButton.setTitle(!isShowCompletedAction ? "Скрыть завершенные" : "Показать завершенные", for: .normal)
         let predicate = NSPredicate(format: "isCompleted == NO")

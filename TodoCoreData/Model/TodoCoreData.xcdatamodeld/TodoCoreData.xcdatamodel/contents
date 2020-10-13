@@ -3,8 +3,9 @@
     <entity name="ToDo" representedClassName="ToDo" syncable="YES">
         <attribute name="action" optional="YES" attributeType="String"/>
         <attribute name="isCompleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="notificationTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="ToDo" positionX="-54" positionY="-9" width="128" height="73"/>
+        <element name="ToDo" positionX="-54" positionY="-9" width="128" height="88"/>
     </elements>
 </model>

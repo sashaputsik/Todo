@@ -9,8 +9,10 @@ extension ViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else{return UITableViewCell()}
+    
         let action = toDoList[indexPath.row]
         cell.actionLabel.text = action.action
+        cell.timeNotifivationLabel.text = "Напомнить в: "+dateFormatter.string(from: action.notificationTime)
         cell.actionLabel.textColor = action.isCompleted ? .lightGray : .black
         return cell
     }
@@ -49,7 +51,7 @@ extension ViewController: UITableViewDelegate{
     }
   
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50.0
+        return 70.0
     }
 }
 
