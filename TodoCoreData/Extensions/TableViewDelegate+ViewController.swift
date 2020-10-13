@@ -9,7 +9,13 @@ extension ViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = toDoList[indexPath.row].action
+        let action = toDoList[indexPath.row]
+        cell.textLabel?.text = action.action
+        if action.isCompleted{
+            cell.textLabel?.textColor = .lightGray
+        }else{
+            cell.textLabel?.textColor = .black
+        }
         return cell
     }
     
@@ -20,22 +26,16 @@ extension ViewController: UITableViewDataSource{
 //MARK: UITableViewDelegate
 
 extension ViewController: UITableViewDelegate{
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete{
-            let context = PersistanceServise.context
-            context.delete(toDoList[indexPath.row])
-            toDoList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .bottom)
-            tableView.reloadData()
-            PersistanceServise.appDelegate.saveContext()
-        }
-    }
+
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        toDoList[indexPath.row].isComplited = true
-        
+        toDoList[indexPath.row].isCompleted = !toDoList[indexPath.row].isCompleted
+        print(toDoList[indexPath.row].isCompleted)
         PersistanceServise.appDelegate.saveContext()
+        tableView.reloadData()
     }
     
+  
 }
 
 

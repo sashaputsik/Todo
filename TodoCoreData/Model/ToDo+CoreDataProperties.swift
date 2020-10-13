@@ -9,6 +9,6 @@ extension ToDo {
     }
 
     @NSManaged public var action: String?
-    @NSManaged public var isComplited: Bool
+    @NSManaged public var isCompleted: Bool
 
 }

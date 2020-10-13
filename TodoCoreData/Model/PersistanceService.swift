@@ -2,7 +2,7 @@ import CoreData
 import Foundation
 import UIKit
 
-var toDoList = [ToDo]()
+
 
 class PersistanceServise{
     
