@@ -29,32 +29,13 @@ class AddedViewController: UIViewController {
         action.action = actionTextField.text
         action.isCompleted = false
         action.notificationTime = nofiticationTime.date
-        setActionNotification(body: action.action, time: nofiticationTime.date)
+            NotificationService.setActionNotification(body: action.action, time: nofiticationTime.date)
         context.insert(action)
         let vc = ViewController()
         vc.toDoList.append(action)
         PersistanceServise.appDelegate.saveContext()
         dismiss(animated: true, completion: nil)
     }
-   
-    func setActionNotification(body: String?, time: Date){
-        let center = UNUserNotificationCenter.current()
-        
-        let content = UNMutableNotificationContent()
-        guard let body = body else{return}
-        content.body = body
-        let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: time)
-        print(dateComponents.hour, dateComponents.minute)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        print(trigger.dateComponents)
-        let request = UNNotificationRequest(identifier: body, content: content, trigger: trigger)
-        center.add(request) { (error) in
-            if let error = error{
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
 
 
 }

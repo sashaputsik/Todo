@@ -22,20 +22,35 @@ extension ViewController: UITableViewDataSource{
 //MARK: UITableViewDelegate
 
 extension ViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeViewController") as? ChangeViewController else{return }
+        vc.index = indexPath.row
+        vc.modalPresentationStyle = .fullScreen
+        show(vc, sender: nil)
+    }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var editTitle = ""
-        editTitle = toDoList[indexPath.row].isCompleted ? "Not completed" : "Completed"
+        editTitle = toDoList[indexPath.row].isCompleted ? "Не выполнить" : "Вополнить"
         let editAction = UITableViewRowAction(style: .default, title: editTitle, handler: {[weak self] (action, indexPath) in
             guard let self = self else{return }
+            guard let action = self.toDoList[indexPath.row].action else{return }
             self.toDoList[indexPath.row].isCompleted = !self.toDoList[indexPath.row].isCompleted
             print(self.toDoList[indexPath.row].isCompleted)
             PersistanceServise.appDelegate.saveContext()
+            let center = UNUserNotificationCenter.current()
+            if self.toDoList[indexPath.row].isCompleted{
+                
+                center.removeDeliveredNotifications(withIdentifiers: [action])
+                print("deleted notification")
+            }else{
+                NotificationService.setActionNotification(body: action, time: self.toDoList[indexPath.row].notificationTime)
+            }
             tableView.reloadData()
         })
      
         editAction.backgroundColor = #colorLiteral(red: 0.2153312262, green: 0.6583518401, blue: 0.4810098751, alpha: 1)
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: {[weak self] (action, indexPath) in
+        let deleteAction = UITableViewRowAction(style: .default, title: "Удалить", handler: {[weak self] (action, indexPath) in
             guard let self = self else{return }
             let context = PersistanceServise.context
             let action = self.toDoList[indexPath.row]

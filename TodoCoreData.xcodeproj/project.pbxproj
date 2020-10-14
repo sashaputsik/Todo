@@ -18,6 +18,9 @@
 		9F59B8D125346A0D000FFF74 /* ToDo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59B8CF25346A0D000FFF74 /* ToDo+CoreDataClass.swift */; };
 		9F59B8D225346A0D000FFF74 /* ToDo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59B8D025346A0D000FFF74 /* ToDo+CoreDataProperties.swift */; };
 		9F59B8D425346A26000FFF74 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59B8D325346A26000FFF74 /* PersistanceService.swift */; };
+		9FABE39E2537004C009A41EB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABE39D2537004C009A41EB /* NotificationService.swift */; };
+		9FABE3A125370162009A41EB /* ErrorDiscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABE3A025370162009A41EB /* ErrorDiscription.swift */; };
+		9FABE3A325370724009A41EB /* ChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABE3A225370724009A41EB /* ChangeViewController.swift */; };
 		9FE9CFFA25346BD3001E4C91 /* AddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9CFF925346BD3001E4C91 /* AddedViewController.swift */; };
 		9FE9CFFE2535D91D001E4C91 /* TextFieldDelegate+AddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9CFFD2535D91D001E4C91 /* TextFieldDelegate+AddedViewController.swift */; };
 		9FE9D0012535E1EF001E4C91 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9D0002535E1EF001E4C91 /* TableViewCell.swift */; };
@@ -37,6 +40,9 @@
 		9F59B8CF25346A0D000FFF74 /* ToDo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9F59B8D025346A0D000FFF74 /* ToDo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9F59B8D325346A26000FFF74 /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
+		9FABE39D2537004C009A41EB /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		9FABE3A025370162009A41EB /* ErrorDiscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDiscription.swift; sourceTree = "<group>"; };
+		9FABE3A225370724009A41EB /* ChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeViewController.swift; sourceTree = "<group>"; };
 		9FE9CFF925346BD3001E4C91 /* AddedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedViewController.swift; sourceTree = "<group>"; };
 		9FE9CFFD2535D91D001E4C91 /* TextFieldDelegate+AddedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextFieldDelegate+AddedViewController.swift"; sourceTree = "<group>"; };
 		9FE9D0002535E1EF001E4C91 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -97,10 +103,9 @@
 		9F59B8CA2534667E000FFF74 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9F59B8D325346A26000FFF74 /* PersistanceService.swift */,
-				9F59B8CF25346A0D000FFF74 /* ToDo+CoreDataClass.swift */,
-				9F59B8D025346A0D000FFF74 /* ToDo+CoreDataProperties.swift */,
-				9F59B8BB25346640000FFF74 /* TodoCoreData.xcdatamodeld */,
+				9FABE39F253700FD009A41EB /* CoreDataModel */,
+				9FABE39D2537004C009A41EB /* NotificationService.swift */,
+				9FABE3A025370162009A41EB /* ErrorDiscription.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -110,6 +115,7 @@
 			children = (
 				9FE9CFF925346BD3001E4C91 /* AddedViewController.swift */,
 				9F59B8B625346640000FFF74 /* ViewController.swift */,
+				9FABE3A225370724009A41EB /* ChangeViewController.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -121,6 +127,17 @@
 				9FE9CFFD2535D91D001E4C91 /* TextFieldDelegate+AddedViewController.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9FABE39F253700FD009A41EB /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				9F59B8D325346A26000FFF74 /* PersistanceService.swift */,
+				9F59B8CF25346A0D000FFF74 /* ToDo+CoreDataClass.swift */,
+				9F59B8D025346A0D000FFF74 /* ToDo+CoreDataProperties.swift */,
+				9F59B8BB25346640000FFF74 /* TodoCoreData.xcdatamodeld */,
+			);
+			path = CoreDataModel;
 			sourceTree = "<group>";
 		};
 		9FE9CFFF2535E1D6001E4C91 /* Base */ = {
@@ -202,15 +219,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FABE3A325370724009A41EB /* ChangeViewController.swift in Sources */,
 				9F59B8B725346640000FFF74 /* ViewController.swift in Sources */,
 				9F59B8CE25346866000FFF74 /* TableViewDelegate+ViewController.swift in Sources */,
 				9F59B8B325346640000FFF74 /* AppDelegate.swift in Sources */,
 				9F59B8D225346A0D000FFF74 /* ToDo+CoreDataProperties.swift in Sources */,
+				9FABE39E2537004C009A41EB /* NotificationService.swift in Sources */,
 				9F59B8BD25346640000FFF74 /* TodoCoreData.xcdatamodeld in Sources */,
 				9FE9CFFA25346BD3001E4C91 /* AddedViewController.swift in Sources */,
 				9FE9D0012535E1EF001E4C91 /* TableViewCell.swift in Sources */,
 				9FE9CFFE2535D91D001E4C91 /* TextFieldDelegate+AddedViewController.swift in Sources */,
 				9F59B8D425346A26000FFF74 /* PersistanceService.swift in Sources */,
+				9FABE3A125370162009A41EB /* ErrorDiscription.swift in Sources */,
 				9F59B8B525346640000FFF74 /* SceneDelegate.swift in Sources */,
 				9F59B8D125346A0D000FFF74 /* ToDo+CoreDataClass.swift in Sources */,
 			);

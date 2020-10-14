@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     fileprivate var isShowCompletedAction = false
     override func viewWillAppear(_ animated: Bool) {
         let predicate = NSPredicate(format: "isCompleted == NO")
-        fetchRequest(predicate: predicate)
+       try? fetchRequest(predicate: predicate)
     }
     
     override func viewDidLoad() {
@@ -24,9 +24,9 @@ class ViewController: UIViewController {
         
     }
     
-    func fetchRequest(predicate: NSPredicate?){
+    func fetchRequest(predicate: NSPredicate?) throws{
         let context = PersistanceServise.context
-        guard let name = ToDo.entity().name else{return }
+        guard let name = ToDo.entity().name else{ throw ErrorHander.emptyEntityName}
         let sort = NSSortDescriptor(key: "isCompleted", ascending: true)
         let fetchRequest = NSFetchRequest<ToDo>(entityName: name)
         fetchRequest.sortDescriptors = [sort]
@@ -36,6 +36,7 @@ class ViewController: UIViewController {
             print(toDoList)
         }catch let error as NSError{
             print(error.localizedDescription)
+            throw ErrorHander.fetchRequest
         }
         tableView.reloadData()
     }
@@ -45,7 +46,7 @@ class ViewController: UIViewController {
     @IBAction func showCompletedAction(_ sender: UIButton) {
         showCompletedActionButton.setTitle(!isShowCompletedAction ? "Скрыть завершенные" : "Показать завершенные", for: .normal)
         let predicate = NSPredicate(format: "isCompleted == NO")
-        fetchRequest(predicate: !isShowCompletedAction ? nil : predicate)
+       try? fetchRequest(predicate: !isShowCompletedAction ? nil : predicate)
         isShowCompletedAction = !isShowCompletedAction
     }
     @IBAction override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {
