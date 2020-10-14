@@ -22,18 +22,11 @@ extension ViewController: UITableViewDataSource{
 //MARK: UITableViewDelegate
 
 extension ViewController: UITableViewDelegate{
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeViewController") as? ChangeViewController else{return }
-        vc.index = indexPath.row
-        vc.toDoList = toDoList
-        vc.modalPresentationStyle = .fullScreen
-        show(vc, sender: nil)
-    }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var editTitle = ""
         editTitle = toDoList[indexPath.row].isCompleted ? "Не выполнить" : "Вополнить"
-        let editAction = UITableViewRowAction(style: .default, title: editTitle, handler: {[weak self] (action, indexPath) in
+        let completedAction = UITableViewRowAction(style: .default, title: editTitle, handler: {[weak self] (action, indexPath) in
             guard let self = self else{return }
             guard let action = self.toDoList[indexPath.row].action else{return }
             self.toDoList[indexPath.row].isCompleted = !self.toDoList[indexPath.row].isCompleted
@@ -45,12 +38,12 @@ extension ViewController: UITableViewDelegate{
                 center.removeDeliveredNotifications(withIdentifiers: [action])
                 print("deleted notification")
             }else{
-                NotificationService.setActionNotification(body: action, time: self.toDoList[indexPath.row].notificationTime)
+                NotificationService.setActionNotification(body: action, time: self.toDoList[indexPath.row].notificationTime, repeatOrNo: true)
             }
             tableView.reloadData()
         })
      
-        editAction.backgroundColor = #colorLiteral(red: 0.2153312262, green: 0.6583518401, blue: 0.4810098751, alpha: 1)
+        completedAction.backgroundColor = #colorLiteral(red: 0.2153312262, green: 0.6583518401, blue: 0.4810098751, alpha: 1)
         let deleteAction = UITableViewRowAction(style: .default, title: "Удалить", handler: {[weak self] (action, indexPath) in
             guard let self = self else{return }
             let context = PersistanceServise.context
@@ -62,8 +55,19 @@ extension ViewController: UITableViewDelegate{
             PersistanceServise.appDelegate.saveContext()
         })
         deleteAction.backgroundColor = UIColor.red
-
-        return [editAction, deleteAction]
+        let editAction = UITableViewRowAction(style: .default, title: "Изменить") {[weak self] (action, indexPath) in
+            guard let self = self else{return}
+            let backItem = UIBarButtonItem()
+            backItem.title = " "
+            self.navigationItem.backBarButtonItem = backItem
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChangeViewController") as? ChangeViewController else{return }
+            vc.index = indexPath.row
+            vc.toDoList = self.toDoList
+            vc.modalPresentationStyle = .fullScreen
+            self.show(vc, sender: nil)
+        }
+        editAction.backgroundColor = .clear
+        return [completedAction, editAction, deleteAction]
     }
   
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

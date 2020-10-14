@@ -6,6 +6,7 @@ class AddedViewController: UIViewController {
     @IBOutlet weak var actionTextField: UITextField!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var nofiticationTime: UIDatePicker!
+    @IBOutlet weak var repeatOrNoControl: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapView = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -29,7 +30,8 @@ class AddedViewController: UIViewController {
         action.action = actionTextField.text
         action.isCompleted = false
         action.notificationTime = nofiticationTime.date
-            NotificationService.setActionNotification(body: action.action, time: nofiticationTime.date)
+        let repeated = repeatOrNoControl.selectedSegmentIndex == 0 ? true : false
+        NotificationService.setActionNotification(body: action.action, time: nofiticationTime.date, repeatOrNo: repeated)
         context.insert(action)
         let vc = ViewController()
         vc.toDoList.append(action)

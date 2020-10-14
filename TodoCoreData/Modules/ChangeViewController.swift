@@ -5,6 +5,7 @@ class ChangeViewController: UIViewController {
     @IBOutlet weak var changeActionTextField: UITextField!
     @IBOutlet weak var changeDatePicker: UIDatePicker!
     @IBOutlet weak var changeActionButton: UIButton!
+    @IBOutlet weak var repeatOrNoControl: UISegmentedControl!
     var toDoList = [ToDo]()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,7 +36,8 @@ class ChangeViewController: UIViewController {
         toDoList[index].isCompleted = false
         toDoList[index].notificationTime = changeDatePicker.date
         PersistanceServise.appDelegate.saveContext()
-        NotificationService.setActionNotification(body: action, time: changeDatePicker.date)
+        let repeated = repeatOrNoControl.selectedSegmentIndex == 0 ? true : false
+        NotificationService.setActionNotification(body: action, time: changeDatePicker.date, repeatOrNo: repeated)
     }
     
     @objc

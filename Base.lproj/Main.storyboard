@@ -125,10 +125,6 @@
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="iZa-X4-mCJ">
-                                <rect key="frame" x="0.0" y="154.5" width="375" height="216"/>
-                                <locale key="locale" localeIdentifier="ru_BY"/>
-                            </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFd-cq-Pyk">
                                 <rect key="frame" x="66" y="562" width="243" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -142,24 +138,39 @@
                                     <segue destination="SV4-lb-vtj" kind="unwind" unwindAction="chagneUnwindWithSegue:" id="RWn-hi-Txe"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="m2L-g4-DP1">
+                                <rect key="frame" x="16" y="149.5" width="343" height="32"/>
+                                <segments>
+                                    <segment title="Повторять "/>
+                                    <segment title="Не повторять "/>
+                                </segments>
+                            </segmentedControl>
+                            <datePicker contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="iZa-X4-mCJ">
+                                <rect key="frame" x="0.0" y="200.5" width="375" height="341.5"/>
+                                <locale key="locale" localeIdentifier="ru_BY"/>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="sds-2m-efN" firstAttribute="trailing" secondItem="Zc2-ab-5Td" secondAttribute="trailing" constant="154" id="0RJ-EL-Xvb"/>
+                            <constraint firstItem="iZa-X4-mCJ" firstAttribute="trailing" secondItem="sds-2m-efN" secondAttribute="trailing" id="3lC-bF-ukw"/>
                             <constraint firstItem="sds-2m-efN" firstAttribute="trailing" secondItem="YuY-m2-TYD" secondAttribute="trailing" constant="15" id="7BT-Rl-BMi"/>
+                            <constraint firstItem="iZa-X4-mCJ" firstAttribute="leading" secondItem="sds-2m-efN" secondAttribute="leading" id="8dd-GJ-mUI"/>
                             <constraint firstItem="Zc2-ab-5Td" firstAttribute="top" secondItem="w3X-7W-jXD" secondAttribute="bottom" constant="20" id="8x2-YC-arP"/>
                             <constraint firstItem="YuY-m2-TYD" firstAttribute="leading" secondItem="sds-2m-efN" secondAttribute="leading" constant="15" id="9sz-u3-K9d"/>
                             <constraint firstItem="YuY-m2-TYD" firstAttribute="top" secondItem="sds-2m-efN" secondAttribute="top" constant="10" id="E8u-eR-4EG"/>
                             <constraint firstItem="sds-2m-efN" firstAttribute="trailing" secondItem="w3X-7W-jXD" secondAttribute="trailing" constant="15" id="Miw-L7-4LJ"/>
+                            <constraint firstItem="sds-2m-efN" firstAttribute="trailing" secondItem="m2L-g4-DP1" secondAttribute="trailing" constant="16" id="NVu-fR-N03"/>
+                            <constraint firstItem="iZa-X4-mCJ" firstAttribute="top" secondItem="m2L-g4-DP1" secondAttribute="bottom" constant="20" id="Tak-Ue-gyf"/>
                             <constraint firstItem="w3X-7W-jXD" firstAttribute="leading" secondItem="sds-2m-efN" secondAttribute="leading" constant="15" id="VOm-RQ-OLF"/>
-                            <constraint firstItem="iZa-X4-mCJ" firstAttribute="leading" secondItem="sds-2m-efN" secondAttribute="leading" id="VpX-bh-vd5"/>
+                            <constraint firstItem="gFd-cq-Pyk" firstAttribute="top" secondItem="iZa-X4-mCJ" secondAttribute="bottom" constant="20" id="Xjm-S5-5f1"/>
                             <constraint firstItem="Zc2-ab-5Td" firstAttribute="leading" secondItem="sds-2m-efN" secondAttribute="leading" constant="15" id="Xta-WT-Len"/>
-                            <constraint firstItem="iZa-X4-mCJ" firstAttribute="top" secondItem="Zc2-ab-5Td" secondAttribute="bottom" constant="20" id="cDo-1V-TCK"/>
                             <constraint firstItem="w3X-7W-jXD" firstAttribute="top" secondItem="YuY-m2-TYD" secondAttribute="bottom" constant="20" id="e2k-3V-4Tc"/>
                             <constraint firstItem="gFd-cq-Pyk" firstAttribute="leading" secondItem="sds-2m-efN" secondAttribute="leading" constant="66" id="e5Y-Cc-l7E"/>
+                            <constraint firstItem="m2L-g4-DP1" firstAttribute="leading" secondItem="sds-2m-efN" secondAttribute="leading" constant="16" id="gZw-I1-C7n"/>
                             <constraint firstItem="sds-2m-efN" firstAttribute="trailing" secondItem="gFd-cq-Pyk" secondAttribute="trailing" constant="66" id="hwg-su-Gjf"/>
                             <constraint firstItem="sds-2m-efN" firstAttribute="bottom" secondItem="gFd-cq-Pyk" secondAttribute="bottom" constant="45" id="rMk-Bm-7vr"/>
-                            <constraint firstItem="iZa-X4-mCJ" firstAttribute="trailing" secondItem="sds-2m-efN" secondAttribute="trailing" id="uxh-xU-tXd"/>
+                            <constraint firstItem="m2L-g4-DP1" firstAttribute="top" secondItem="Zc2-ab-5Td" secondAttribute="bottom" constant="15" id="y7g-aU-jNl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sds-2m-efN"/>
                     </view>
@@ -167,6 +178,7 @@
                         <outlet property="changeActionButton" destination="gFd-cq-Pyk" id="csF-FB-TS6"/>
                         <outlet property="changeActionTextField" destination="w3X-7W-jXD" id="c8m-Zl-3pv"/>
                         <outlet property="changeDatePicker" destination="iZa-X4-mCJ" id="Uno-eV-PT0"/>
+                        <outlet property="repeatOrNoControl" destination="m2L-g4-DP1" id="0qY-3i-zeX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3R-br-CfG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -231,29 +243,39 @@
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rKn-yf-stg">
-                                <rect key="frame" x="0.0" y="257" width="375" height="216"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rKn-yf-stg">
+                                <rect key="frame" x="0.0" y="313" width="375" height="216"/>
                                 <locale key="locale" localeIdentifier="ru_BY"/>
                             </datePicker>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gkx-vk-6Xr">
+                                <rect key="frame" x="16" y="262" width="343" height="32"/>
+                                <segments>
+                                    <segment title="Повторять "/>
+                                    <segment title="Не повторять "/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="38m-RI-xlE" firstAttribute="top" secondItem="uH3-2a-dAm" secondAttribute="bottom" constant="20" id="5fA-aU-xaF"/>
                             <constraint firstItem="38m-RI-xlE" firstAttribute="leading" secondItem="JP7-da-orr" secondAttribute="leading" constant="15" id="5fY-uN-3Ya"/>
                             <constraint firstItem="wnX-TI-Fed" firstAttribute="top" secondItem="JP7-da-orr" secondAttribute="top" constant="20" id="64v-YJ-Zqi"/>
-                            <constraint firstItem="rKn-yf-stg" firstAttribute="leading" secondItem="JP7-da-orr" secondAttribute="leading" id="83E-D6-F3c"/>
+                            <constraint firstItem="rKn-yf-stg" firstAttribute="leading" secondItem="JP7-da-orr" secondAttribute="leading" id="70A-z6-Xbk"/>
                             <constraint firstItem="wnX-TI-Fed" firstAttribute="height" secondItem="uH3-2a-dAm" secondAttribute="height" id="90T-01-haf"/>
+                            <constraint firstItem="gkx-vk-6Xr" firstAttribute="leading" secondItem="AtL-8g-svQ" secondAttribute="leading" constant="16" id="AoA-HO-Uon"/>
                             <constraint firstItem="O8K-lh-FJU" firstAttribute="top" secondItem="hc1-yh-Jwq" secondAttribute="bottom" constant="20" id="Bld-C4-aRK"/>
-                            <constraint firstItem="rKn-yf-stg" firstAttribute="trailing" secondItem="JP7-da-orr" secondAttribute="trailing" id="HcY-so-2wM"/>
+                            <constraint firstItem="rKn-yf-stg" firstAttribute="trailing" secondItem="JP7-da-orr" secondAttribute="trailing" id="BxF-dj-Ski"/>
+                            <constraint firstAttribute="trailing" secondItem="gkx-vk-6Xr" secondAttribute="trailing" constant="16" id="GHI-8j-2hC"/>
                             <constraint firstItem="O8K-lh-FJU" firstAttribute="leading" secondItem="JP7-da-orr" secondAttribute="leading" constant="15" id="MVS-zx-P4g"/>
                             <constraint firstItem="0cx-hj-YlW" firstAttribute="leading" secondItem="JP7-da-orr" secondAttribute="leading" constant="15" id="PHf-Ef-hbm"/>
                             <constraint firstItem="wnX-TI-Fed" firstAttribute="top" secondItem="uH3-2a-dAm" secondAttribute="top" id="PO0-dd-Faf"/>
-                            <constraint firstItem="rKn-yf-stg" firstAttribute="top" secondItem="O8K-lh-FJU" secondAttribute="bottom" constant="15" id="bjP-Ue-3jv"/>
+                            <constraint firstItem="gkx-vk-6Xr" firstAttribute="top" secondItem="O8K-lh-FJU" secondAttribute="bottom" constant="20" id="Vab-4p-AlN"/>
                             <constraint firstItem="JP7-da-orr" firstAttribute="trailing" secondItem="wnX-TI-Fed" secondAttribute="trailing" constant="16" id="fJa-BN-pG4"/>
                             <constraint firstItem="wnX-TI-Fed" firstAttribute="width" secondItem="uH3-2a-dAm" secondAttribute="width" id="jqF-7Y-ErS"/>
                             <constraint firstItem="JP7-da-orr" firstAttribute="trailing" secondItem="O8K-lh-FJU" secondAttribute="trailing" constant="154" id="jxr-GF-vtt"/>
                             <constraint firstItem="hc1-yh-Jwq" firstAttribute="leading" secondItem="JP7-da-orr" secondAttribute="leading" constant="15" id="mwJ-Vk-NuX"/>
                             <constraint firstItem="0cx-hj-YlW" firstAttribute="top" secondItem="38m-RI-xlE" secondAttribute="bottom" constant="20" id="tPf-81-MMa"/>
+                            <constraint firstItem="rKn-yf-stg" firstAttribute="top" secondItem="gkx-vk-6Xr" secondAttribute="bottom" constant="20" id="vcV-RN-5Hl"/>
                             <constraint firstItem="hc1-yh-Jwq" firstAttribute="top" secondItem="0cx-hj-YlW" secondAttribute="bottom" constant="20" id="yLQ-zu-Xxk"/>
                             <constraint firstItem="uH3-2a-dAm" firstAttribute="leading" secondItem="JP7-da-orr" secondAttribute="leading" constant="16" id="yjg-oL-02C"/>
                             <constraint firstItem="JP7-da-orr" firstAttribute="trailing" secondItem="hc1-yh-Jwq" secondAttribute="trailing" constant="15" id="yxE-Hg-X6g"/>
@@ -265,6 +287,7 @@
                         <outlet property="addedButton" destination="wnX-TI-Fed" id="s9r-kc-Rsg"/>
                         <outlet property="cancelButton" destination="uH3-2a-dAm" id="cOL-iA-egy"/>
                         <outlet property="nofiticationTime" destination="rKn-yf-stg" id="UBA-n5-atD"/>
+                        <outlet property="repeatOrNoControl" destination="gkx-vk-6Xr" id="su3-aj-8BX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L4O-SP-aOh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -280,6 +303,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="KK7-xP-zgn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96.5"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="35"/>
                         </textAttributes>
