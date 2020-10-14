@@ -14,6 +14,11 @@ class ChangeViewController: UIViewController {
         changeDatePicker.date = action.notificationTime
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        changeActionButton.layer.cornerRadius = UIButton.Appearance.cornerRadius
+        changeActionButton.layer.shadowOffset = UIButton.Appearance.shadowOffset
+        changeActionButton.layer.shadowOpacity = UIButton.Appearance.shadowOpicity
+        
     }
     
     override func viewDidLoad() {
