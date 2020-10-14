@@ -59,6 +59,9 @@ class ViewController: UIViewController {
         guard let vc = segue.source as? AddedViewController else{return }
         print(vc)
     }
-
+    @IBAction func chagneUnwind(segue: UIStoryboardSegue){
+        guard let vc = segue.source as? AddedViewController else{return }
+        print(vc)
+       }
 }
 

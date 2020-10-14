@@ -100,54 +100,71 @@
             </objects>
             <point key="canvasLocation" x="1077.5999999999999" y="109.29535232383809"/>
         </scene>
-        <!--Change View Controller-->
+        <!--Изменить-->
         <scene sceneID="30v-Qf-30h">
             <objects>
-                <viewController storyboardIdentifier="ChangeViewController" id="Rlq-ma-k1H" customClass="ChangeViewController" customModule="TodoCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangeViewController" title="Изменить" id="Rlq-ma-k1H" customClass="ChangeViewController" customModule="TodoCoreData" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tRD-Z8-wQo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Название" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w3X-7W-jXD">
-                                <rect key="frame" x="15" y="205" width="345" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы можете изменить само действие и время уведомдения" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YuY-m2-TYD">
+                                <rect key="frame" x="15" y="10" width="345" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Название" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w3X-7W-jXD">
+                                <rect key="frame" x="15" y="63.5" width="345" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Напоминание" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7C-pn-M2N">
-                                <rect key="frame" x="15" y="119" width="171" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Введите что именно нужно напомнить " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YuY-m2-TYD">
-                                <rect key="frame" x="15" y="168" width="266" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберете время напоминания" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zc2-ab-5Td">
+                                <rect key="frame" x="15" y="117.5" width="206" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Выберете время напоминания" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zc2-ab-5Td">
-                                <rect key="frame" x="15" y="259" width="206" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="iZa-X4-mCJ">
-                                <rect key="frame" x="0.0" y="291" width="375" height="216"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="iZa-X4-mCJ">
+                                <rect key="frame" x="0.0" y="154.5" width="375" height="216"/>
                                 <locale key="locale" localeIdentifier="ru_BY"/>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFd-cq-Pyk">
+                                <rect key="frame" x="164" y="548" width="46" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="SV4-lb-vtj" kind="unwind" unwindAction="chagneUnwindWithSegue:" id="RWn-hi-Txe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="sds-2m-efN" firstAttribute="trailing" secondItem="Zc2-ab-5Td" secondAttribute="trailing" constant="154" id="0RJ-EL-Xvb"/>
+                            <constraint firstItem="sds-2m-efN" firstAttribute="trailing" secondItem="YuY-m2-TYD" secondAttribute="trailing" constant="15" id="7BT-Rl-BMi"/>
+                            <constraint firstItem="Zc2-ab-5Td" firstAttribute="top" secondItem="w3X-7W-jXD" secondAttribute="bottom" constant="20" id="8x2-YC-arP"/>
+                            <constraint firstItem="YuY-m2-TYD" firstAttribute="leading" secondItem="sds-2m-efN" secondAttribute="leading" constant="15" id="9sz-u3-K9d"/>
+                            <constraint firstItem="YuY-m2-TYD" firstAttribute="top" secondItem="sds-2m-efN" secondAttribute="top" constant="10" id="E8u-eR-4EG"/>
+                            <constraint firstItem="sds-2m-efN" firstAttribute="trailing" secondItem="w3X-7W-jXD" secondAttribute="trailing" constant="15" id="Miw-L7-4LJ"/>
+                            <constraint firstItem="w3X-7W-jXD" firstAttribute="leading" secondItem="sds-2m-efN" secondAttribute="leading" constant="15" id="VOm-RQ-OLF"/>
+                            <constraint firstItem="iZa-X4-mCJ" firstAttribute="leading" secondItem="sds-2m-efN" secondAttribute="leading" id="VpX-bh-vd5"/>
+                            <constraint firstItem="Zc2-ab-5Td" firstAttribute="leading" secondItem="sds-2m-efN" secondAttribute="leading" constant="15" id="Xta-WT-Len"/>
+                            <constraint firstItem="iZa-X4-mCJ" firstAttribute="top" secondItem="Zc2-ab-5Td" secondAttribute="bottom" constant="20" id="cDo-1V-TCK"/>
+                            <constraint firstItem="w3X-7W-jXD" firstAttribute="top" secondItem="YuY-m2-TYD" secondAttribute="bottom" constant="20" id="e2k-3V-4Tc"/>
+                            <constraint firstItem="iZa-X4-mCJ" firstAttribute="trailing" secondItem="sds-2m-efN" secondAttribute="trailing" id="uxh-xU-tXd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="sds-2m-efN"/>
                     </view>
+                    <connections>
+                        <outlet property="changeActionButton" destination="gFd-cq-Pyk" id="csF-FB-TS6"/>
+                        <outlet property="changeActionTextField" destination="w3X-7W-jXD" id="c8m-Zl-3pv"/>
+                        <outlet property="changeDatePicker" destination="iZa-X4-mCJ" id="Uno-eV-PT0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3R-br-CfG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="SV4-lb-vtj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1063" y="778"/>
+            <point key="canvasLocation" x="1061.5999999999999" y="777.66116941529242"/>
         </scene>
         <!--Added View Controller-->
         <scene sceneID="2ej-oe-p6l">
@@ -169,7 +186,7 @@
                                     <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="tkA-dK-0wM" kind="unwind" unwindAction="unwindFor:towards:" id="Vp0-ms-OXA"/>
+                                    <segue destination="tkA-dK-0wM" kind="unwind" identifier="" unwindAction="unwindFor:towards:" id="Vp0-ms-OXA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uH3-2a-dAm">
@@ -180,7 +197,7 @@
                                     <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="tkA-dK-0wM" kind="unwind" unwindAction="cancelUnwindWithSegue:" id="dLj-kk-TIo"/>
+                                    <segue destination="tkA-dK-0wM" kind="unwind" identifier="backSegue" unwindAction="cancelUnwindWithSegue:" id="dLj-kk-TIo"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Название" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hc1-yh-Jwq">

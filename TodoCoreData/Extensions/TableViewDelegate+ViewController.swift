@@ -25,6 +25,7 @@ extension ViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeViewController") as? ChangeViewController else{return }
         vc.index = indexPath.row
+        vc.toDoList = toDoList
         vc.modalPresentationStyle = .fullScreen
         show(vc, sender: nil)
     }

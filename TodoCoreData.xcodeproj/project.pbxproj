@@ -21,6 +21,7 @@
 		9FABE39E2537004C009A41EB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABE39D2537004C009A41EB /* NotificationService.swift */; };
 		9FABE3A125370162009A41EB /* ErrorDiscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABE3A025370162009A41EB /* ErrorDiscription.swift */; };
 		9FABE3A325370724009A41EB /* ChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABE3A225370724009A41EB /* ChangeViewController.swift */; };
+		9FABE3A525370EEA009A41EB /* TextFieldDelegate+ChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABE3A425370EEA009A41EB /* TextFieldDelegate+ChangeViewController.swift */; };
 		9FE9CFFA25346BD3001E4C91 /* AddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9CFF925346BD3001E4C91 /* AddedViewController.swift */; };
 		9FE9CFFE2535D91D001E4C91 /* TextFieldDelegate+AddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9CFFD2535D91D001E4C91 /* TextFieldDelegate+AddedViewController.swift */; };
 		9FE9D0012535E1EF001E4C91 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9D0002535E1EF001E4C91 /* TableViewCell.swift */; };
@@ -43,6 +44,7 @@
 		9FABE39D2537004C009A41EB /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		9FABE3A025370162009A41EB /* ErrorDiscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDiscription.swift; sourceTree = "<group>"; };
 		9FABE3A225370724009A41EB /* ChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeViewController.swift; sourceTree = "<group>"; };
+		9FABE3A425370EEA009A41EB /* TextFieldDelegate+ChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextFieldDelegate+ChangeViewController.swift"; sourceTree = "<group>"; };
 		9FE9CFF925346BD3001E4C91 /* AddedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedViewController.swift; sourceTree = "<group>"; };
 		9FE9CFFD2535D91D001E4C91 /* TextFieldDelegate+AddedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextFieldDelegate+AddedViewController.swift"; sourceTree = "<group>"; };
 		9FE9D0002535E1EF001E4C91 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				9F59B8CD25346866000FFF74 /* TableViewDelegate+ViewController.swift */,
 				9FE9CFFD2535D91D001E4C91 /* TextFieldDelegate+AddedViewController.swift */,
+				9FABE3A425370EEA009A41EB /* TextFieldDelegate+ChangeViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				9FABE39E2537004C009A41EB /* NotificationService.swift in Sources */,
 				9F59B8BD25346640000FFF74 /* TodoCoreData.xcdatamodeld in Sources */,
 				9FE9CFFA25346BD3001E4C91 /* AddedViewController.swift in Sources */,
+				9FABE3A525370EEA009A41EB /* TextFieldDelegate+ChangeViewController.swift in Sources */,
 				9FE9D0012535E1EF001E4C91 /* TableViewCell.swift in Sources */,
 				9FE9CFFE2535D91D001E4C91 /* TextFieldDelegate+AddedViewController.swift in Sources */,
 				9F59B8D425346A26000FFF74 /* PersistanceService.swift in Sources */,
