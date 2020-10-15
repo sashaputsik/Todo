@@ -3,12 +3,15 @@ import UIKit
 
 //MARK: UITableViewDataSource
 extension ViewController: UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         return toDoList.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else{return UITableViewCell()}
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
+                                                       for: indexPath) as? TableViewCell else{return UITableViewCell()}
     
         let action = toDoList[indexPath.row]
         cell.actionLabel.text = action.action
@@ -23,10 +26,13 @@ extension ViewController: UITableViewDataSource{
 
 extension ViewController: UITableViewDelegate{
 
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    func tableView(_ tableView: UITableView,
+                   editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var editTitle = ""
         editTitle = toDoList[indexPath.row].isCompleted ? "Не выполнить" : "Вополнить"
-        let completedAction = UITableViewRowAction(style: .default, title: editTitle, handler: {[weak self] (action, indexPath) in
+        let completedAction = UITableViewRowAction(style: .default,
+                                                   title: editTitle,
+                                                   handler: {[weak self] (action, indexPath) in
             guard let self = self else{return }
             guard let action = self.toDoList[indexPath.row].action else{return }
             self.toDoList[indexPath.row].isCompleted = !self.toDoList[indexPath.row].isCompleted
@@ -66,12 +72,12 @@ extension ViewController: UITableViewDelegate{
             vc.modalPresentationStyle = .fullScreen
             self.show(vc, sender: nil)
         }
-        editAction.backgroundColor = .clear
+        editAction.backgroundColor = .orange
         return [completedAction, editAction, deleteAction]
     }
   
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70.0
+        return 65.0
     }
 }
 

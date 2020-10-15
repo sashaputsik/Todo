@@ -6,7 +6,8 @@ class ViewController: UIViewController {
     var comp = [Any]()
     var dateFormatter: DateFormatter{
         let dateF = DateFormatter()
-        dateF.dateFormat = "HH:mm"
+        dateF.locale = Locale(identifier: "ru_RU")
+        dateF.dateFormat = "E, d MMM HH:mm"
         return dateF
     }
     @IBOutlet private(set) var tableView: UITableView!

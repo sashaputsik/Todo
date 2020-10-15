@@ -1,7 +1,6 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
-
     @IBOutlet weak var actionLabel: UILabel!
     @IBOutlet weak var timeNotifivationLabel: UILabel!
     override func awakeFromNib() {
