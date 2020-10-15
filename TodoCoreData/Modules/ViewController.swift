@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet private(set) var showCompletedActionButton: UIButton!
     fileprivate var isShowCompletedAction = false
     override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
         let predicate = NSPredicate(format: "isCompleted == NO")
        try? fetchRequest(predicate: predicate)
     }

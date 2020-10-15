@@ -38,7 +38,7 @@ extension ViewController: UITableViewDelegate{
                 center.removeDeliveredNotifications(withIdentifiers: [action])
                 print("deleted notification")
             }else{
-                NotificationService.setActionNotification(body: action, time: self.toDoList[indexPath.row].notificationTime, repeatOrNo: true)
+                NotificationService.setActionNotification(body: action, time: self.toDoList[indexPath.row].notificationTime, repeatOrNo: true, complitionHandler: {center in })
             }
             tableView.reloadData()
         })
