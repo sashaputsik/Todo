@@ -36,8 +36,6 @@ class AddedViewController: UIViewController {
             center.delegate = self
         })
         context.insert(action)
-        let vc = ViewController()
-        vc.toDoList.append(action)
         PersistanceServise.appDelegate.saveContext()
         dismiss(animated: true, completion: nil)
     }

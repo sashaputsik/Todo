@@ -1,18 +1,17 @@
 import UIKit
 import CoreData
 class ChangeViewController: UIViewController {
-    var index = 0
+    
     @IBOutlet weak var changeActionTextField: UITextField!
     @IBOutlet weak var changeDatePicker: UIDatePicker!
     @IBOutlet weak var changeActionButton: UIButton!
     @IBOutlet weak var repeatOrNoControl: UISegmentedControl!
-    var toDoList = [ToDo]()
+    var action: ToDo?
     
     override func viewWillAppear(_ animated: Bool) {
-        let action = toDoList[index]
-        changeActionTextField.text = action.action
+        changeActionTextField.text = action?.action
         changeActionTextField.delegate = self
-        changeDatePicker.date = action.notificationTime
+        changeDatePicker.date = action!.notificationTime
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
         
@@ -31,13 +30,13 @@ class ChangeViewController: UIViewController {
     //MARK: Handler
     @objc
     private func setChangeAction(){
-        guard let action = changeActionTextField.text else{return}
-        toDoList[index].action = action
-        toDoList[index].isCompleted = false
-        toDoList[index].notificationTime = changeDatePicker.date
+        guard let actionText = changeActionTextField.text else{return}
+        action?.action = actionText
+        action?.isCompleted = false
+        action?.notificationTime = changeDatePicker.date
         PersistanceServise.appDelegate.saveContext()
         let repeated = repeatOrNoControl.selectedSegmentIndex == 0 ? true : false
-        NotificationService.setActionNotification(body: action, time: changeDatePicker.date, repeatOrNo: repeated, complitionHandler: {
+        NotificationService.setActionNotification(body: action?.action, time: changeDatePicker.date, repeatOrNo: repeated, complitionHandler: {
             center in
             center.delegate = self
         })
