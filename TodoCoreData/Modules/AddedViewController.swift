@@ -10,10 +10,13 @@ class AddedViewController: UIViewController {
     @IBOutlet weak var repeatOrNoControl: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tapView = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        let tapView = UITapGestureRecognizer(target: self,
+                                             action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapView )
         actionTextField.delegate = self
-        addedButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
+        addedButton.addTarget(self,
+                              action: #selector(addAction),
+                              for: .touchUpInside)
         addedButton.setLayerButton(button: addedButton)
         cancelButton.setLayerButton(button: cancelButton)
     }
@@ -31,13 +34,21 @@ class AddedViewController: UIViewController {
         action.action = actionTextField.text
         action.isCompleted = false
         action.notificationTime = nofiticationTime.date
+        action.id = UUID().uuidString
+        print(action.id)
         let repeated = repeatOrNoControl.selectedSegmentIndex == 0 ? true : false
-        NotificationService.setActionNotification(body: action.action, time: nofiticationTime.date, repeatOrNo: repeated, complitionHandler: { (center) in
+        guard let id = action.id else{return}
+        NotificationService.setActionNotification(body: action.action,
+                                                  time: nofiticationTime.date,
+                                                  repeatOrNo: repeated,
+                                                  id: id,
+                                                  complitionHandler: { (center) in
             center.delegate = self
         })
         context.insert(action)
         PersistanceServise.appDelegate.saveContext()
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true,
+                completion: nil)
     }
 
 

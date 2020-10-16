@@ -28,6 +28,11 @@ extension ViewController: UITableViewDataSource{
 
 extension ViewController: UITableViewDelegate{
 
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let sections = fetchResultController?.sections else{return ""}
+        let title = sections[section].name
+        return title
+    }
     func tableView(_ tableView: UITableView,
                    editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var editTitle = ""
@@ -45,23 +50,27 @@ extension ViewController: UITableViewDelegate{
                 center.removeDeliveredNotifications(withIdentifiers: [action])
                 print("deleted notification")
             }else{
+                guard let id = actionOne.id else{return }
                 NotificationService.setActionNotification(body: action,
                                                           time: actionOne.notificationTime,
                                                           repeatOrNo: true,
+                                                          id: id,
                                                           complitionHandler: {center in })
             }
             tableView.reloadData()
         })
      
         completedAction.backgroundColor = #colorLiteral(red: 0.2153312262, green: 0.6583518401, blue: 0.4810098751, alpha: 1)
-        let deleteAction = UITableViewRowAction(style: .default, title: "Удалить", handler: {[weak self] (action, indexPath) in
+        let deleteAction = UITableViewRowAction(style: .default,
+                                                title: "Удалить",
+                                                handler: {[weak self] (action, indexPath) in
             let context = PersistanceServise.context
             context.delete(actionOne)
             PersistanceServise.appDelegate.saveContext()
-          //  tableView.deleteRows(at: [indexPath], with: .left)
         })
         deleteAction.backgroundColor = UIColor.red
-        let editAction = UITableViewRowAction(style: .default, title: "Изменить") {[weak self] (action, indexPath) in
+        let editAction = UITableViewRowAction(style: .default,
+                                              title: "Изменить") {[weak self] (action, indexPath) in
             guard let self = self else{return}
             let backItem = UIBarButtonItem()
             backItem.title = " "
@@ -72,10 +81,13 @@ extension ViewController: UITableViewDelegate{
             self.show(vc, sender: nil)
         }
         editAction.backgroundColor = .orange
-        return [completedAction, editAction, deleteAction]
+        return [completedAction,
+                editAction,
+                deleteAction]
     }
   
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 65.0
     }
 }

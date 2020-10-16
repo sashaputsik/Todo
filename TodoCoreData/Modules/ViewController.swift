@@ -56,14 +56,16 @@ class ViewController: UIViewController {
     
 //MARK: IBAction
     @IBAction func showCompletedAction(_ sender: UIButton) {
-        showCompletedActionButton.setTitle(!isShowCompletedAction ? "Скрыть завершенные" : "Показать завершенные", for: .normal)
+        showCompletedActionButton.setTitle(!isShowCompletedAction ? "Скрыть завершенные" : "Показать завершенные",
+                                           for: .normal)
         let predicate = NSPredicate(format: "isCompleted == NO")
        try? fetchRequest(predicate: !isShowCompletedAction ? nil : predicate)
         isShowCompletedAction = !isShowCompletedAction
     }
     
 //MARK: UnwindSegue
-    @IBAction override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {
+    @IBAction override func unwind(for unwindSegue: UIStoryboardSegue,
+                                   towards subsequentVC: UIViewController) {
         guard let vc = unwindSegue.source as? AddedViewController else{return}
         isShowCompletedAction = false
         print(vc)

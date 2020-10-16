@@ -24,7 +24,9 @@ class ChangeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(index)
-        changeActionButton.addTarget(self, action: #selector(setChangeAction), for: .touchUpInside)
+        changeActionButton.addTarget(self,
+                                     action: #selector(setChangeAction),
+                                     for: .touchUpInside)
     }
     
     //MARK: Handler
@@ -36,7 +38,12 @@ class ChangeViewController: UIViewController {
         action?.notificationTime = changeDatePicker.date
         PersistanceServise.appDelegate.saveContext()
         let repeated = repeatOrNoControl.selectedSegmentIndex == 0 ? true : false
-        NotificationService.setActionNotification(body: action?.action, time: changeDatePicker.date, repeatOrNo: repeated, complitionHandler: {
+        guard let id = action?.id else{return}
+        NotificationService.setActionNotification(body: action?.action,
+                                                  time: changeDatePicker.date,
+                                                  repeatOrNo: repeated,
+                                                  id: id,
+                                                  complitionHandler: {
             center in
             center.delegate = self
         })
@@ -51,7 +58,9 @@ class ChangeViewController: UIViewController {
 
 extension ChangeViewController: UNUserNotificationCenterDelegate{
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
         switch response.actionIdentifier {
         case "completed":
             let requestId = response.notification.request.identifier

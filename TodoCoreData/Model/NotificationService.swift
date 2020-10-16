@@ -7,7 +7,9 @@ class NotificationService{
     
     static func setActionNotification(body: String?,
                                       time: Date,
-                                      repeatOrNo: Bool, complitionHandler: @escaping (UNUserNotificationCenter) -> ()){
+                                      repeatOrNo: Bool,
+                                      id: String,
+                                      complitionHandler: @escaping (UNUserNotificationCenter) -> ()){
         let center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
         guard let body = body else{return}
@@ -21,7 +23,7 @@ class NotificationService{
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents,
                                                     repeats: repeatOrNo)
         print(trigger.dateComponents)
-        let request = UNNotificationRequest(identifier: body,
+        let request = UNNotificationRequest(identifier: id,
                                             content: content,
                                             trigger: trigger)
         complitionHandler(center)
