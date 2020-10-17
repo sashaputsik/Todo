@@ -39,19 +39,44 @@ class ChangeViewController: UIViewController {
         PersistanceServise.appDelegate.saveContext()
         let repeated = repeatOrNoControl.selectedSegmentIndex == 0 ? true : false
         guard let id = action?.id else{return}
-        NotificationService.setActionNotification(body: action?.action,
+        setActionNotification(body: action?.action,
                                                   time: changeDatePicker.date,
                                                   repeatOrNo: repeated,
-                                                  id: id,
-                                                  complitionHandler: {
-            center in
-            center.delegate = self
-        })
+                                                  id: id)
     }
     
     @objc
     private func dismissKeyboard(){
         changeActionTextField.endEditing(true)
+    }
+    
+    func setActionNotification(body: String?,
+                                      time: Date,
+                                      repeatOrNo: Bool,
+                                      id: String){
+        let center = UNUserNotificationCenter.current()
+        let content = UNMutableNotificationContent()
+        guard let body = body else{return}
+        content.body = body
+        let dateComponents = Calendar.current.dateComponents([.day, .hour, .minute],
+                                                            from: time)
+        
+        let shareAction = UNNotificationAction(identifier: "completed", title: "Comleted", options: .foreground)
+        let category = UNNotificationCategory(identifier: "idC", actions: [shareAction], intentIdentifiers: [], options: [])
+        content.categoryIdentifier = "idC"
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents,
+                                                    repeats: repeatOrNo)
+        print(trigger.dateComponents)
+        let request = UNNotificationRequest(identifier: id,
+                                            content: content,
+                                            trigger: trigger)
+        center.add(request) { (error) in
+            if let error = error{
+                print(error.localizedDescription)
+            }
+        }
+        center.setNotificationCategories([category])
+        
     }
     
 }
@@ -65,16 +90,15 @@ extension ChangeViewController: UNUserNotificationCenterDelegate{
         case "completed":
             let requestId = response.notification.request.identifier
             let context = PersistanceServise.context
-            guard let entityName = ToDo.entity().name else{return }
+            guard let entityName = ToDo.entity().name else{return  }
             let fetch = NSFetchRequest<ToDo>(entityName: entityName)
             let list = try? context.fetch(fetch)
             for action in list!{
-                if action.action == requestId{
-                    print(true)
+                if action.id == requestId{
                     action.isCompleted = true
+                    PersistanceServise.appDelegate.saveContext()
                 }
             }
-            PersistanceServise.appDelegate.saveContext()
         default:
             print("default")
         }

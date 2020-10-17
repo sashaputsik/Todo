@@ -51,12 +51,11 @@ extension ViewController: UITableViewDelegate{
                 print("deleted notification")
             }else{
                 guard let id = actionOne.id else{return }
-                NotificationService.setActionNotification(body: action,
-                                                          time: actionOne.notificationTime,
-                                                          repeatOrNo: true,
-                                                          id: id,
-                                                          complitionHandler: {center in })
-            }
+                self.setActionNotification(body: action,
+                                      time: actionOne.notificationTime,
+                                      repeatOrNo: true,
+                                      id: id)
+}
             tableView.reloadData()
         })
      

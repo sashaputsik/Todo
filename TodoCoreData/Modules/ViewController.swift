@@ -5,6 +5,7 @@ class ViewController: UIViewController {
 
     var fetchResultController: NSFetchedResultsController<ToDo>?
     var comp = [Any]()
+ //   var center: UNUserNotificationCenter?
     var dateFormatter: DateFormatter{
         let dateF = DateFormatter()
         dateF.locale = Locale(identifier: "ru_RU")
@@ -53,6 +54,36 @@ class ViewController: UIViewController {
         tableView.reloadData()
     }
     
+    func setActionNotification(body: String?,
+                                      time: Date,
+                                      repeatOrNo: Bool,
+                                      id: String){
+        var center = UNUserNotificationCenter.current()
+        let content = UNMutableNotificationContent()
+        guard let body = body else{return}
+        content.body = body
+        let dateComponents = Calendar.current.dateComponents([.day, .hour, .minute],
+                                                            from: time)
+        
+        let shareAction = UNNotificationAction(identifier: "completed", title: "Comleted", options: .destructive)
+        let category = UNNotificationCategory(identifier: "idC", actions: [shareAction], intentIdentifiers: [], options: [])
+        content.categoryIdentifier = "idC"
+       // let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents,
+            //                                        repeats: repeatOrNo)
+        let timeTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        print(timeTrigger.timeInterval)
+        let request = UNNotificationRequest(identifier: id,
+                                            content: content,
+                                            trigger: timeTrigger)
+        center.delegate = self
+        center.add(request) { (error) in
+            if let error = error{
+                print(error.localizedDescription)
+            }
+        }
+        center.setNotificationCategories([category])
+        
+    }
     
 //MARK: IBAction
     @IBAction func showCompletedAction(_ sender: UIButton) {
@@ -82,3 +113,33 @@ class ViewController: UIViewController {
        }
 }
 
+
+
+extension ViewController: UNUserNotificationCenterDelegate{
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        switch response.actionIdentifier {
+        case "completed":
+            print("fsdfds")
+            let requestId = response.notification.request.identifier
+            print(requestId)
+            let context = PersistanceServise.context
+            guard let entityName = ToDo.entity().name else{return }
+            let fetch = NSFetchRequest<ToDo>(entityName: entityName)
+            let list = try? context.fetch(fetch)
+            for action in list!{
+                print(action.id)
+                if action.id == requestId{
+
+                    print(true)
+                    action.isCompleted = true
+                    PersistanceServise.appDelegate.saveContext()
+                }
+            }
+        default:
+            print("default")
+        }
+    }
+}

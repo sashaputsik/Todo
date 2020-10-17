@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9F4DA305253A25F8002BC8E2 /* FRCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DA304253A25F8002BC8E2 /* FRCViewController.swift */; };
 		9F4DA308253A2ED1002BC8E2 /* FetchResultController+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DA307253A2ED1002BC8E2 /* FetchResultController+ViewController.swift */; };
 		9F59B8B325346640000FFF74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59B8B225346640000FFF74 /* AppDelegate.swift */; };
 		9F59B8B525346640000FFF74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59B8B425346640000FFF74 /* SceneDelegate.swift */; };
@@ -20,7 +19,6 @@
 		9F59B8D125346A0D000FFF74 /* ToDo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59B8CF25346A0D000FFF74 /* ToDo+CoreDataClass.swift */; };
 		9F59B8D225346A0D000FFF74 /* ToDo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59B8D025346A0D000FFF74 /* ToDo+CoreDataProperties.swift */; };
 		9F59B8D425346A26000FFF74 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59B8D325346A26000FFF74 /* PersistanceService.swift */; };
-		9FABE39E2537004C009A41EB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABE39D2537004C009A41EB /* NotificationService.swift */; };
 		9FABE3A125370162009A41EB /* ErrorDiscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABE3A025370162009A41EB /* ErrorDiscription.swift */; };
 		9FABE3A325370724009A41EB /* ChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABE3A225370724009A41EB /* ChangeViewController.swift */; };
 		9FABE3A525370EEA009A41EB /* TextFieldDelegate+ChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FABE3A425370EEA009A41EB /* TextFieldDelegate+ChangeViewController.swift */; };
@@ -30,7 +28,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9F4DA304253A25F8002BC8E2 /* FRCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRCViewController.swift; sourceTree = "<group>"; };
 		9F4DA307253A2ED1002BC8E2 /* FetchResultController+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FetchResultController+ViewController.swift"; sourceTree = "<group>"; };
 		9F59B8AF25346640000FFF74 /* TodoCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F59B8B225346640000FFF74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,7 +42,6 @@
 		9F59B8CF25346A0D000FFF74 /* ToDo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9F59B8D025346A0D000FFF74 /* ToDo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9F59B8D325346A26000FFF74 /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
-		9FABE39D2537004C009A41EB /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		9FABE3A025370162009A41EB /* ErrorDiscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDiscription.swift; sourceTree = "<group>"; };
 		9FABE3A225370724009A41EB /* ChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeViewController.swift; sourceTree = "<group>"; };
 		9FABE3A425370EEA009A41EB /* TextFieldDelegate+ChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextFieldDelegate+ChangeViewController.swift"; sourceTree = "<group>"; };
@@ -110,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				9FABE39F253700FD009A41EB /* CoreDataModel */,
-				9FABE39D2537004C009A41EB /* NotificationService.swift */,
 				9FABE3A025370162009A41EB /* ErrorDiscription.swift */,
 			);
 			path = Model;
@@ -122,7 +117,6 @@
 				9FE9CFF925346BD3001E4C91 /* AddedViewController.swift */,
 				9F59B8B625346640000FFF74 /* ViewController.swift */,
 				9FABE3A225370724009A41EB /* ChangeViewController.swift */,
-				9F4DA304253A25F8002BC8E2 /* FRCViewController.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -234,14 +228,12 @@
 				9F59B8B325346640000FFF74 /* AppDelegate.swift in Sources */,
 				9F4DA308253A2ED1002BC8E2 /* FetchResultController+ViewController.swift in Sources */,
 				9F59B8D225346A0D000FFF74 /* ToDo+CoreDataProperties.swift in Sources */,
-				9FABE39E2537004C009A41EB /* NotificationService.swift in Sources */,
 				9F59B8BD25346640000FFF74 /* TodoCoreData.xcdatamodeld in Sources */,
 				9FE9CFFA25346BD3001E4C91 /* AddedViewController.swift in Sources */,
 				9FABE3A525370EEA009A41EB /* TextFieldDelegate+ChangeViewController.swift in Sources */,
 				9FE9D0012535E1EF001E4C91 /* TableViewCell.swift in Sources */,
 				9FE9CFFE2535D91D001E4C91 /* TextFieldDelegate+AddedViewController.swift in Sources */,
 				9F59B8D425346A26000FFF74 /* PersistanceService.swift in Sources */,
-				9F4DA305253A25F8002BC8E2 /* FRCViewController.swift in Sources */,
 				9FABE3A125370162009A41EB /* ErrorDiscription.swift in Sources */,
 				9F59B8B525346640000FFF74 /* SceneDelegate.swift in Sources */,
 				9F59B8D125346A0D000FFF74 /* ToDo+CoreDataClass.swift in Sources */,
