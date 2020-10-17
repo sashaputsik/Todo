@@ -6,10 +6,11 @@ class AddedViewController: UIViewController {
     @IBOutlet weak var addedButton: UIButton!
     @IBOutlet weak var actionTextField: UITextField!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var nofiticationTime: UIDatePicker!
+    @IBOutlet weak var notificationTime: UIDatePicker!
     @IBOutlet weak var repeatOrNoControl: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
+        notificationTime.minimumDate = Date()
         let tapView = UITapGestureRecognizer(target: self,
                                              action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapView )
@@ -29,24 +30,29 @@ class AddedViewController: UIViewController {
     
     @objc
     private func addAction(){
-        let context = PersistanceServise.context
-        let action = ToDo(context: context)
-        action.action = actionTextField.text
-        action.isCompleted = false
-        action.notificationTime = nofiticationTime.date
-        action.id = UUID().uuidString
-        print(action.id)
-        let repeated = repeatOrNoControl.selectedSegmentIndex == 0 ? true : false
-        guard let id = action.id else{return}
-        setActionNotification(body: action.action,
-                                                  time: nofiticationTime.date,
-                                                  repeatOrNo: repeated,
-                                                  id: id)
-        context.insert(action)
-        PersistanceServise.appDelegate.saveContext()
-        dismiss(animated: true,
-                completion: nil)
+        if actionTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
+            print("empty Fields")
+        }else{
+            let context = PersistanceServise.context
+            let action = ToDo(context: context)
+            action.action = actionTextField.text
+            action.isCompleted = false
+            action.notificationTime = notificationTime.date
+            action.id = UUID().uuidString
+            print(action.id)
+            let repeated = repeatOrNoControl.selectedSegmentIndex == 0 ? true : false
+            guard let id = action.id else{return}
+            setActionNotification(body: action.action,
+                                                      time: notificationTime.date,
+                                                      repeatOrNo: repeated,
+                                                      id: id)
+            context.insert(action)
+            PersistanceServise.appDelegate.saveContext()
+            dismiss(animated: true,
+                    completion: nil)
+        }
     }
+    
     func setActionNotification(body: String?,
                                       time: Date,
                                       repeatOrNo: Bool,

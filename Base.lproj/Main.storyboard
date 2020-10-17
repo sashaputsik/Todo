@@ -286,7 +286,7 @@
                         <outlet property="actionTextField" destination="hc1-yh-Jwq" id="DiE-BC-ct0"/>
                         <outlet property="addedButton" destination="wnX-TI-Fed" id="s9r-kc-Rsg"/>
                         <outlet property="cancelButton" destination="uH3-2a-dAm" id="cOL-iA-egy"/>
-                        <outlet property="nofiticationTime" destination="rKn-yf-stg" id="UBA-n5-atD"/>
+                        <outlet property="notificationTime" destination="rKn-yf-stg" id="UBA-n5-atD"/>
                         <outlet property="repeatOrNoControl" destination="gkx-vk-6Xr" id="su3-aj-8BX"/>
                     </connections>
                 </viewController>
