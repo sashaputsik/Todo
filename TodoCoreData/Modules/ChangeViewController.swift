@@ -58,11 +58,21 @@ class ChangeViewController: UIViewController {
         let content = UNMutableNotificationContent()
         guard let body = body else{return}
         content.body = body
-        let dateComponents = Calendar.current.dateComponents([.day, .hour, .minute],
+        let dateComponents = Calendar.current.dateComponents([.day,
+                                                              .hour,
+                                                              .minute],
                                                             from: time)
         
-        let shareAction = UNNotificationAction(identifier: "completed", title: "Comleted", options: .foreground)
-        let category = UNNotificationCategory(identifier: "idC", actions: [shareAction], intentIdentifiers: [], options: [])
+        let shareAction = UNNotificationAction(identifier: "completed",
+                                               title: "Выполнено",
+                                               options: .foreground)
+        let repeatInHour = UNNotificationAction(identifier: "repeatInHour",
+                                                title: "Повторить через час",
+                                                options: .destructive)
+        let category = UNNotificationCategory(identifier: "idC",
+                                              actions: [shareAction, repeatInHour],
+                                              intentIdentifiers: [],
+                                              options: [])
         content.categoryIdentifier = "idC"
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents,
                                                     repeats: repeatOrNo)
@@ -99,6 +109,17 @@ extension ChangeViewController: UNUserNotificationCenterDelegate{
                     PersistanceServise.appDelegate.saveContext()
                 }
             }
+        case "repeatInHour":
+            let content = response.notification.request.content
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10,
+                                                          repeats: false)
+            center.removeDeliveredNotifications(withIdentifiers: [response.notification.request.identifier])
+            let request = UNNotificationRequest(identifier: response.notification.request.identifier,
+                                              content: content,
+                                              trigger: trigger)
+            center.add(request, withCompletionHandler: nil)
+
+            print("")
         default:
             print("default")
         }

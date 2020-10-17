@@ -37,6 +37,7 @@ extension ViewController: UITableViewDelegate{
                    editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var editTitle = ""
         guard let actionOne = fetchResultController?.object(at: indexPath) else{return []}
+        guard let id = actionOne.id else{return []}
         editTitle = actionOne.isCompleted ? "Не выполнить" : "Вополнить"
         let completedAction = UITableViewRowAction(style: .default,
                                                    title: editTitle,
@@ -47,7 +48,8 @@ extension ViewController: UITableViewDelegate{
             PersistanceServise.appDelegate.saveContext()
             let center = UNUserNotificationCenter.current()
             if actionOne.isCompleted{
-                center.removeDeliveredNotifications(withIdentifiers: [action])
+                
+                center.removeDeliveredNotifications(withIdentifiers: [id])
                 print("deleted notification")
             }else{
                 guard let id = actionOne.id else{return }
@@ -65,6 +67,8 @@ extension ViewController: UITableViewDelegate{
                                                 handler: {[weak self] (action, indexPath) in
             let context = PersistanceServise.context
             context.delete(actionOne)
+            let center = UNUserNotificationCenter.current()
+            center.removeDeliveredNotifications(withIdentifiers: [id])
             PersistanceServise.appDelegate.saveContext()
         })
         deleteAction.backgroundColor = UIColor.red

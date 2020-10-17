@@ -100,46 +100,6 @@
             </objects>
             <point key="canvasLocation" x="1077.5999999999999" y="109.29535232383809"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="pMJ-Na-TJm">
-            <objects>
-                <viewController id="87n-wa-ZJw" customClass="FRCViewController" customModule="TodoCoreData" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Toz-jE-bjU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wm7-FS-ehB">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="KM5-Ut-YQo">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KM5-Ut-YQo" id="Oqv-y0-c4e">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="wm7-FS-ehB" firstAttribute="trailing" secondItem="2pi-2n-y3W" secondAttribute="trailing" id="0hh-Tf-Iev"/>
-                            <constraint firstItem="wm7-FS-ehB" firstAttribute="leading" secondItem="2pi-2n-y3W" secondAttribute="leading" id="3CF-bR-kBP"/>
-                            <constraint firstItem="wm7-FS-ehB" firstAttribute="top" secondItem="2pi-2n-y3W" secondAttribute="top" id="J37-pC-gra"/>
-                            <constraint firstItem="wm7-FS-ehB" firstAttribute="bottom" secondItem="2pi-2n-y3W" secondAttribute="bottom" id="NsT-OE-gkX"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="2pi-2n-y3W"/>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="wm7-FS-ehB" id="1aq-YX-W46"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5qi-RO-ZDt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-21.600000000000001" y="852.3238380809596"/>
-        </scene>
         <!--Изменение-->
         <scene sceneID="30v-Qf-30h">
             <objects>
