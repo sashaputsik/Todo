@@ -2,6 +2,15 @@ import Foundation
 import UIKit
 
 //MARK: UITableViewDataSource
+
+extension UITableView{
+    struct Appearance {
+        static let cornerRadius: CGFloat = 10
+        static let shadowOpacity: Float = 0.5
+        static let shadowOffset = CGSize(width: 2, height: 2)
+    }
+}
+
 extension ViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {

@@ -4,20 +4,20 @@ import CoreData
 class ViewController: UIViewController {
 
     var fetchResultController: NSFetchedResultsController<ToDo>?
-    var comp = [Any]()
- //   var center: UNUserNotificationCenter?
     var dateFormatter: DateFormatter{
         let dateF = DateFormatter()
         dateF.locale = Locale(identifier: "ru_RU")
         dateF.dateFormat = "E, d MMM HH:mm"
         return dateF
     }
+    
     @IBOutlet private(set) var tableView: UITableView!
     @IBOutlet private(set) var showCompletedActionButton: UIButton!
     fileprivate var isShowCompletedAction = false
+    
+    @IBOutlet weak var backView: UIView!
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
-        
         
         
         let predicate = NSPredicate(format: "isCompleted == NO")
@@ -26,9 +26,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        backView.layer.cornerRadius = 120
         tableView.delegate = self
         tableView.dataSource = self
-        
+        tableView.clipsToBounds = false
+        tableView.layer.masksToBounds = false
+        tableView.layer.shadowOffset = UITableView.Appearance.shadowOffset
+        tableView.layer.shadowRadius = 10
+        tableView.layer.shadowOpacity = UITableView.Appearance.shadowOpacity
+       
     }
     
     func fetchRequest(predicate: NSPredicate?) throws{
@@ -163,3 +169,5 @@ extension ViewController: UNUserNotificationCenterDelegate{
         }
     }
 }
+
+
