@@ -23,18 +23,18 @@ extension ViewController: UITableViewDataSource{
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                        for: indexPath) as? TableViewCell else{return UITableViewCell()}
-    
-        let action = fetchResultController?.object(at: indexPath)
-        cell.actionLabel.text = action?.action
-        cell.timeNotifivationLabel.text = "Напомнить в: "+dateFormatter.string(from: action!.notificationTime)
-        cell.actionLabel.textColor = action!.isCompleted ? .lightGray : .black
+        guard let action = fetchResultController?.object(at: indexPath) else{return UITableViewCell()}
+        cell.setInfo(of: action)
+        if action.isCompleted{
+            cell.contentView.backgroundColor = .clear
+            cell.backgroundColor = .clear
+        }
         return cell
     }
 
 }
 
 //MARK: UITableViewDelegate
-
 extension ViewController: UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -47,19 +47,19 @@ extension ViewController: UITableViewDelegate{
         var editTitle = ""
         guard let actionOne = fetchResultController?.object(at: indexPath) else{return []}
         guard let id = actionOne.id else{return []}
-        editTitle = actionOne.isCompleted ? "Не выполнить" : "Вополнить"
+        editTitle = actionOne.isCompleted ? "Добавить заново" : "Вополнить"
+        
         let completedAction = UITableViewRowAction(style: .default,
                                                    title: editTitle,
                                                    handler: {[weak self] (action, indexPath) in
             guard let self = self else{return }
-                                                    guard let action = actionOne.action else{return }
-                                                    actionOne.isCompleted = !actionOne.isCompleted
+            guard let action = actionOne.action else{return }
+            actionOne.isCompleted = !actionOne.isCompleted
             PersistanceServise.appDelegate.saveContext()
             let center = UNUserNotificationCenter.current()
             if actionOne.isCompleted{
-                
                 center.removeDeliveredNotifications(withIdentifiers: [id])
-                print("deleted notification")
+                print("Deleted notification")
             }else{
                 guard let id = actionOne.id else{return }
                 self.setActionNotification(body: action,
@@ -69,11 +69,11 @@ extension ViewController: UITableViewDelegate{
 }
             tableView.reloadData()
         })
-     
         completedAction.backgroundColor = #colorLiteral(red: 0.2153312262, green: 0.6583518401, blue: 0.4810098751, alpha: 1)
+        
         let deleteAction = UITableViewRowAction(style: .default,
                                                 title: "Удалить",
-                                                handler: {[weak self] (action, indexPath) in
+                                                handler: {(action, indexPath) in
             let context = PersistanceServise.context
             context.delete(actionOne)
             let center = UNUserNotificationCenter.current()
@@ -81,6 +81,7 @@ extension ViewController: UITableViewDelegate{
             PersistanceServise.appDelegate.saveContext()
         })
         deleteAction.backgroundColor = UIColor.red
+        
         let editAction = UITableViewRowAction(style: .default,
                                               title: "Изменить") {[weak self] (action, indexPath) in
             guard let self = self else{return}
@@ -93,6 +94,7 @@ extension ViewController: UITableViewDelegate{
             self.show(vc, sender: nil)
         }
         editAction.backgroundColor = .orange
+        
         return [completedAction,
                 editAction,
                 deleteAction]

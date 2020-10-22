@@ -80,6 +80,7 @@ class ChangeViewController: UIViewController {
         let request = UNNotificationRequest(identifier: id,
                                             content: content,
                                             trigger: trigger)
+        center.delegate = self
         center.add(request) { (error) in
             if let error = error{
                 print(error.localizedDescription)
@@ -102,8 +103,8 @@ extension ChangeViewController: UNUserNotificationCenterDelegate{
             let context = PersistanceServise.context
             guard let entityName = ToDo.entity().name else{return  }
             let fetch = NSFetchRequest<ToDo>(entityName: entityName)
-            let list = try? context.fetch(fetch)
-            for action in list!{
+            guard let list = try? context.fetch(fetch) else{return }
+            for action in list{
                 if action.id == requestId{
                     action.isCompleted = true
                     PersistanceServise.appDelegate.saveContext()
@@ -112,14 +113,13 @@ extension ChangeViewController: UNUserNotificationCenterDelegate{
         case "repeatInHour":
             let content = response.notification.request.content
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10,
-                                                          repeats: false)
+                                                            repeats: false)
             center.removeDeliveredNotifications(withIdentifiers: [response.notification.request.identifier])
             let request = UNNotificationRequest(identifier: response.notification.request.identifier,
-                                              content: content,
-                                              trigger: trigger)
-            center.add(request, withCompletionHandler: nil)
-
-            print("")
+                                                content: content,
+                                                trigger: trigger)
+            center.add(request,
+                       withCompletionHandler: nil)
         default:
             print("default")
         }

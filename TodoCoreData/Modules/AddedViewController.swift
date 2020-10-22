@@ -120,8 +120,9 @@ extension AddedViewController: UNUserNotificationCenterDelegate{
             guard let entityName = ToDo.entity().name else{return }
             let fetch = NSFetchRequest<ToDo>(entityName: entityName)
             print(requestId)
-            let list = try? context.fetch(fetch)
-            for action in list!{
+            guard let list = try? context.fetch(fetch) else{return }
+            for action in list{
+                print(action.id)
                 if action.id == requestId{
                     action.isCompleted = true
                     PersistanceServise.appDelegate.saveContext()

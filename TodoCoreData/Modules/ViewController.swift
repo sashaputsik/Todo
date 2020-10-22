@@ -4,12 +4,8 @@ import CoreData
 class ViewController: UIViewController {
 
     var fetchResultController: NSFetchedResultsController<ToDo>?
-    var dateFormatter: DateFormatter{
-        let dateF = DateFormatter()
-        dateF.locale = Locale(identifier: "ru_RU")
-        dateF.dateFormat = "E, d MMM HH:mm"
-        return dateF
-    }
+    var center: UNUserNotificationCenter?
+    
     
     @IBOutlet private(set) var tableView: UITableView!
     @IBOutlet private(set) var showCompletedActionButton: UIButton!
@@ -18,10 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var backView: UIView!
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
-        
-        
         let predicate = NSPredicate(format: "isCompleted == NO")
-       try? fetchRequest(predicate: predicate)
+        try? fetchRequest(predicate: predicate)
     }
     
     override func viewDidLoad() {
@@ -63,8 +57,8 @@ class ViewController: UIViewController {
     func setActionNotification(body: String?,
                                       time: Date,
                                       repeatOrNo: Bool,
-                                      id: String){
-        var center = UNUserNotificationCenter.current()
+                                      id: String) {
+        center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
         guard let body = body else{return}
         content.body = body
@@ -75,7 +69,7 @@ class ViewController: UIViewController {
         
         let shareAction = UNNotificationAction(identifier: "completed",
                                                title: "Выполнено",
-                                               options: .foreground)
+                                               options: .destructive)
         let repeatInHour = UNNotificationAction(identifier: "repeatInHour",
                                                 title: "Повторить через час",
                                                 options: .destructive)
@@ -90,13 +84,14 @@ class ViewController: UIViewController {
         let request = UNNotificationRequest(identifier: id,
                                             content: content,
                                             trigger: trigger)
-        center.delegate = self
-        center.add(request) { (error) in
+        center?.delegate = self
+        center?.add(request) { (error) in
             if let error = error{
                 print(error.localizedDescription)
             }
         }
-        center.setNotificationCategories([category])
+        
+        center?.setNotificationCategories([category])
         
     }
     
@@ -137,14 +132,13 @@ extension ViewController: UNUserNotificationCenterDelegate{
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         switch response.actionIdentifier {
         case "completed":
-            print("fsdfds")
             let requestId = response.notification.request.identifier
             print(requestId)
             let context = PersistanceServise.context
             guard let entityName = ToDo.entity().name else{return }
             let fetch = NSFetchRequest<ToDo>(entityName: entityName)
-            let list = try? context.fetch(fetch)
-            for action in list!{
+            guard let list = try? context.fetch(fetch) else{return }
+            for action in list{
                 print(action.id)
                 if action.id == requestId{
 
