@@ -7,7 +7,8 @@ extension UITableView{
     struct Appearance {
         static let cornerRadius: CGFloat = 10
         static let shadowOpacity: Float = 0.5
-        static let shadowOffset = CGSize(width: 2, height: 2)
+        static let shadowOffset = CGSize(width: 2,
+                                         height: 2)
     }
 }
 
@@ -91,7 +92,8 @@ extension ViewController: UITableViewDelegate{
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChangeViewController") as? ChangeViewController else{return }
             vc.action = self.fetchResultController?.object(at: indexPath)
             vc.modalPresentationStyle = .fullScreen
-            self.show(vc, sender: nil)
+            self.show(vc,
+                      sender: nil)
         }
         editAction.backgroundColor = .orange
         

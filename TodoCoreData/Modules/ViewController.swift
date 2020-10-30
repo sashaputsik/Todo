@@ -1,12 +1,10 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController {
+class ViewController: BaseViewController {
 
     var fetchResultController: NSFetchedResultsController<ToDo>?
-    var center: UNUserNotificationCenter?
-    
-    
+
     @IBOutlet private(set) var tableView: UITableView!
     @IBOutlet private(set) var showCompletedActionButton: UIButton!
     fileprivate var isShowCompletedAction = false
@@ -54,47 +52,6 @@ class ViewController: UIViewController {
         tableView.reloadData()
     }
     
-    func setActionNotification(body: String?,
-                                      time: Date,
-                                      repeatOrNo: Bool,
-                                      id: String) {
-        center = UNUserNotificationCenter.current()
-        let content = UNMutableNotificationContent()
-        guard let body = body else{return}
-        content.body = body
-        let dateComponents = Calendar.current.dateComponents([.day,
-                                                              .hour,
-                                                              .minute],
-                                                            from: time)
-        
-        let shareAction = UNNotificationAction(identifier: "completed",
-                                               title: "Выполнено",
-                                               options: .destructive)
-        let repeatInHour = UNNotificationAction(identifier: "repeatInHour",
-                                                title: "Повторить через час",
-                                                options: .destructive)
-        let category = UNNotificationCategory(identifier: "idC",
-                                              actions: [shareAction, repeatInHour],
-                                              intentIdentifiers: [],
-                                              options: [])
-        content.categoryIdentifier = "idC"
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents,
-                                                    repeats: repeatOrNo)
-
-        let request = UNNotificationRequest(identifier: id,
-                                            content: content,
-                                            trigger: trigger)
-        center?.delegate = self
-        center?.add(request) { (error) in
-            if let error = error{
-                print(error.localizedDescription)
-            }
-        }
-        
-        center?.setNotificationCategories([category])
-        
-    }
-    
 //MARK: IBAction
     @IBAction func showCompletedAction(_ sender: UIButton) {
         showCompletedActionButton.setTitle(!isShowCompletedAction ? "Скрыть завершенные" : "Показать завершенные",
@@ -124,44 +81,6 @@ class ViewController: UIViewController {
 }
 
 
-
-extension ViewController: UNUserNotificationCenterDelegate{
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                didReceive response: UNNotificationResponse,
-                                withCompletionHandler completionHandler: @escaping () -> Void) {
-        switch response.actionIdentifier {
-        case "completed":
-            let requestId = response.notification.request.identifier
-            print(requestId)
-            let context = PersistanceServise.context
-            guard let entityName = ToDo.entity().name else{return }
-            let fetch = NSFetchRequest<ToDo>(entityName: entityName)
-            guard let list = try? context.fetch(fetch) else{return }
-            for action in list{
-                print(action.id)
-                if action.id == requestId{
-
-                    print(true)
-                    action.isCompleted = true
-                    PersistanceServise.appDelegate.saveContext()
-                }
-            }
-        case "repeatInHour":
-            let content = response.notification.request.content
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3600,
-                                                            repeats: false)
-            center.removeDeliveredNotifications(withIdentifiers: [response.notification.request.identifier])
-            let request = UNNotificationRequest(identifier: response.notification.request.identifier,
-                                                content: content,
-                                                trigger: trigger)
-            center.add(request, withCompletionHandler: nil)
-            
-            print("")
-        default:
-            print("default")
-        }
-    }
-}
-
+//MARK: BaseViewController
+//MARK: added segue to action notification
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F25B55E254BFF08001A51C4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F25B55D254BFF08001A51C4 /* BaseViewController.swift */; };
 		9F4DA308253A2ED1002BC8E2 /* FetchResultController+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DA307253A2ED1002BC8E2 /* FetchResultController+ViewController.swift */; };
 		9F59B8B325346640000FFF74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59B8B225346640000FFF74 /* AppDelegate.swift */; };
 		9F59B8B525346640000FFF74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59B8B425346640000FFF74 /* SceneDelegate.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F25B55D254BFF08001A51C4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		9F4DA307253A2ED1002BC8E2 /* FetchResultController+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FetchResultController+ViewController.swift"; sourceTree = "<group>"; };
 		9F59B8AF25346640000FFF74 /* TodoCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F59B8B225346640000FFF74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				9FE9CFF925346BD3001E4C91 /* AddedViewController.swift */,
 				9F59B8B625346640000FFF74 /* ViewController.swift */,
 				9FABE3A225370724009A41EB /* ChangeViewController.swift */,
+				9F25B55D254BFF08001A51C4 /* BaseViewController.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				9FE9CFFE2535D91D001E4C91 /* TextFieldDelegate+AddedViewController.swift in Sources */,
 				9F59B8D425346A26000FFF74 /* PersistanceService.swift in Sources */,
 				9FABE3A125370162009A41EB /* ErrorDiscription.swift in Sources */,
+				9F25B55E254BFF08001A51C4 /* BaseViewController.swift in Sources */,
 				9F59B8B525346640000FFF74 /* SceneDelegate.swift in Sources */,
 				9F59B8D125346A0D000FFF74 /* ToDo+CoreDataClass.swift in Sources */,
 			);
